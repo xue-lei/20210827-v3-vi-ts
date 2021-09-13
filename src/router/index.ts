@@ -8,7 +8,8 @@ const router = createRouter({
   routes:[
       { 
         path: '/', 
-        component: layout, 
+        component: layout,
+        redirect: '/HelloWorld',
         children: [
           {
             path: '/HelloWorld',
