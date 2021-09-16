@@ -5,11 +5,11 @@
       <a-menu theme="dark" v-model:selectedKeys="selectedKeys" mode="inline">
         <a-menu-item key="1">
           <pie-chart-outlined />
-          <span>Option 1</span>
+          <span></span><router-link to="/blend">Option 1</router-link>
         </a-menu-item>
         <a-menu-item key="2">
           <desktop-outlined />
-          <span>Option 2</span>
+          <span></span><router-link to="/draw">Option 2</router-link>
         </a-menu-item>
         <a-sub-menu key="sub1">
           <template #title>
@@ -18,8 +18,12 @@
               <span>User</span>
             </span>
           </template>
-          <a-menu-item key="3"><router-link to="/HelloWorld">option1</router-link></a-menu-item>
-          <a-menu-item key="4"><router-link to="/option2">option2</router-link></a-menu-item>
+          <a-menu-item key="3"
+            ><router-link to="/blend">option1</router-link></a-menu-item
+          >
+          <a-menu-item key="4"
+            ><router-link to="/draw">option2</router-link></a-menu-item
+          >
           <a-menu-item key="5">Alex</a-menu-item>
         </a-sub-menu>
         <a-sub-menu key="sub2">
@@ -45,7 +49,9 @@
           <a-breadcrumb-item>User</a-breadcrumb-item>
           <a-breadcrumb-item>Bill</a-breadcrumb-item>
         </a-breadcrumb>
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+        <div
+          :style="{ padding: '24px', background: '#fff', minHeight: '360px' }"
+        >
           <router-view></router-view>
         </div>
       </a-layout-content>
@@ -54,7 +60,7 @@
       </a-layout-footer>
     </a-layout>
   </a-layout>
-    <a-drawer
+  <a-drawer
     title="Basic Drawer"
     :placement="placement"
     :closable="false"
@@ -66,49 +72,26 @@
     <p>Some contents...</p>
   </a-drawer>
 </template>
-<script lang="ts">
+<script setup lang="ts">
 import {
   PieChartOutlined,
   DesktopOutlined,
   UserOutlined,
   TeamOutlined,
   FileOutlined,
-} from '@ant-design/icons-vue';
-import { defineComponent, ref } from 'vue';
-export default defineComponent({
-  components: {
-    PieChartOutlined,
-    DesktopOutlined,
-    UserOutlined,
-    TeamOutlined,
-    FileOutlined,
-  },
-  setup() {
-    const placement = ref<string>('top');
-    const visible = ref<boolean>(false);
+} from "@ant-design/icons-vue";
+import { ref } from "vue";
+const placement = ref<string>("top");
+const visible = ref<boolean>(false);
+let collapsed = ref(false);
+let selectedKeys = ref(["1"]);
+const showDrawer = () => {
+  visible.value = true;
+};
 
-    const showDrawer = () => {
-      visible.value = true;
-    };
-
-    const onClose = () => {
-      visible.value = false;
-    };
-    return {
-      placement,
-      visible,
-      showDrawer,
-      onClose,
-    };
-  },
-  data() {
-    return {
-      collapsed: ref(false),
-      selectedKeys: ref(['1']),
-      
-    };
-  },
-});
+const onClose = () => {
+  visible.value = false;
+};
 </script>
 <style>
 #components-layout-demo-side .logo {
@@ -120,7 +103,8 @@ export default defineComponent({
 .site-layout .site-layout-background {
   background: #fff;
 }
-[data-theme='dark'] .site-layout .site-layout-background {
+
+[data-theme="dark"] .site-layout .site-layout-background {
   background: #141414;
 }
 </style>

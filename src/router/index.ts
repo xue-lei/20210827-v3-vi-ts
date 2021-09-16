@@ -1,6 +1,8 @@
 import {createRouter,createWebHashHistory} from 'vue-router';
 import layout from '@/layout/index.vue';
-
+interface routerInfo {
+  path:string
+}
 
 const router = createRouter({
   // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
@@ -9,15 +11,15 @@ const router = createRouter({
       { 
         path: '/', 
         component: layout,
-        redirect: '/HelloWorld',
+        redirect: '/blend',
         children: [
           {
-            path: '/HelloWorld',
-            component: () => import('@/components/HelloWorld.vue')
+            path: '/blend',
+            component: () => import('@/view/blend/index.vue')
           },
           {
-            path: '/option2',
-            component: {template:"<div>11111111</div>"}
+            path: '/draw',
+            component: () => import('@/view/draw/index.vue')
           }
         ] 
       },
