@@ -5,6 +5,7 @@
     <!--`<router-link>` 将呈现一个带有正确 `href` 属性的 `<a>` 标签-->
     <router-link to="/">Go to Home</router-link>
   </p>
+  <AliwangwangOutlined :style="{ fontSize: '100px' }" />
   <!-- 路由出口 -->
   <!-- 路由匹配到的组件将渲染在这里 -->
   <h1>{{ msg }}</h1>
@@ -34,6 +35,7 @@
 </template>
 <script setup lang="ts">
 import { ref, toRefs } from "vue";
+import { AliwangwangOutlined } from "@ant-design/icons-vue";
 const props = defineProps<{
   msg: string;
 }>();
@@ -41,6 +43,7 @@ const props = defineProps<{
 const { msg } = toRefs(props);
 const conuter = ref(0);
 const click0 = async () => {
+  const post = await fetch(`/api/post/1`).then((r) => r.json());
   console.log(msg.value);
 };
 </script>

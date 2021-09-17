@@ -11,6 +11,13 @@ export default defineConfig({
       '@':'/src'
     }
   },
+  build: {
+    terserOptions: {
+      compress: {
+        drop_console: true
+      },
+    }
+  },
   server: {
     proxy: {
       // 字符串简写写法
