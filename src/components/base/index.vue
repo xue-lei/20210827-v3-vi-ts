@@ -34,18 +34,37 @@
   </p>
 </template>
 <script setup lang="ts">
-import { ref, toRefs } from "vue";
+import { ref, toRefs, watchEffect, watch } from "vue";
 import { AliwangwangOutlined } from "@ant-design/icons-vue";
 const props = defineProps<{
   msg: string;
 }>();
-
+const emits = defineEmits(["changev"]);
 const { msg } = toRefs(props);
 const conuter = ref(0);
-const click0 = async () => {
-  const post = await fetch(`/api/post/1`).then((r) => r.json());
-  console.log(msg.value);
+const click0 = () => {
+  click1().then((res) => {
+    console.log(res);
+  });
+  console.log("12131");
 };
+const click1 = async () => {
+  emits("changev", "1231");
+  const post = await fetch(`https//www.baidu.com/api/post/1`)
+    .then((r) => {
+      console.log(r.json());
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+  return post;
+};
+watchEffect(() => {
+  console.log("listener0:" + conuter.value);
+});
+watch(conuter, (con, precon) => {
+  console.log("listener0:" + con + "-" + precon);
+});
 </script>
 <style scoped>
 a {

@@ -53,11 +53,11 @@ export default defineConfig({
         }
       }
     }),
-    copy({
-      targets: [
-        { src: 'src/env.d.ts', dest: 'public' }, //执行拷贝
-      ]
-    }),
+    // copy({
+    //   targets: [
+    //     { src: 'src/env.d.ts', dest: 'public' }, //执行拷贝
+    //   ]
+    // }),
     // styleImport({
     //   libs: [
     //     {
