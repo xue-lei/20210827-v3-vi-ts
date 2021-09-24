@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import styleImport from 'vite-plugin-style-import'
 import ViteComponents, { AntDesignVueResolver } from 'vite-plugin-components';
 import copy from 'rollup-plugin-copy'
+import legacy from '@vitejs/plugin-legacy'
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -16,6 +17,15 @@ export default defineConfig({
       compress: {
         drop_console: true
       },
+    },
+    rollupOptions: {
+      output:{
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+                return id.toString().split('node_modules/')[1].split('/')[0].toString();
+            }
+        }
+      }
     }
   },
   server: {
@@ -53,6 +63,12 @@ export default defineConfig({
         }
       }
     }),
+    legacy({
+      targets: ['defaults', 'not IE 11']
+    }),
+     ViteComponents({
+      customComponentResolvers: [AntDesignVueResolver()],
+    }),
     // copy({
     //   targets: [
     //     { src: 'src/env.d.ts', dest: 'public' }, //执行拷贝
@@ -67,8 +83,6 @@ export default defineConfig({
     //     },
     //   ],
     // }),
-    ViteComponents({
-      customComponentResolvers: [AntDesignVueResolver()],
-    })
+
   ]
 })
