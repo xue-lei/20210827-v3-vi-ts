@@ -11,6 +11,10 @@
           <desktop-outlined />
           <span></span><router-link to="/draw">Option 2</router-link>
         </a-menu-item>
+        <a-menu-item key="3">
+          <desktop-outlined />
+          <span></span><router-link to="/im">Option 3</router-link>
+        </a-menu-item>
         <a-sub-menu key="sub1">
           <template #title>
             <span>

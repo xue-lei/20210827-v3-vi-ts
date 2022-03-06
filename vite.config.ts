@@ -1,23 +1,33 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import styleImport from 'vite-plugin-style-import'
-import ViteComponents, { AntDesignVueResolver } from 'vite-plugin-components';
+import Components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import copy from 'rollup-plugin-copy'
 import legacy from '@vitejs/plugin-legacy'
+import PkgConfig from 'vite-plugin-package-config'
+import OptimizationPersist from 'vite-plugin-optimize-persist'
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/imws/",
   resolve: {
     alias: {
+      process: "process/browser",
+      stream: "stream-browserify",
+      zlib: "browserify-zlib",
+      util: 'util',
       'vue': 'vue/dist/vue.esm-bundler.js', // 定义vue的别名，如果使用其他的插件，可能会用到别名
       '@':'/src'
     }
   },
   build: {
-    terserOptions: {
-      compress: {
-        drop_console: true
-      },
-    },
+    outDir:"dist/imws",
+
+    // terserOptions: {
+    //   compress: {
+    //     drop_console: true
+    //   },
+    // },
     rollupOptions: {
       output:{
           manualChunks(id) {
@@ -30,13 +40,14 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      // 字符串简写写法
-      //'/foo': 'http://localhost:4567',
-      // 选项写法
       '/api': {
         target: 'http://www.baidu.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
+      },
+      '/imws/im': {
+        target:'http://localhost:1996',
+        ws:true
       },
       // 正则表达式写法
       // '^/fallback/.*': {
@@ -66,9 +77,14 @@ export default defineConfig({
     legacy({
       targets: ['defaults', 'not IE 11']
     }),
-     ViteComponents({
-      customComponentResolvers: [AntDesignVueResolver()],
+    Components({
+      extensions: ['src/components'],
+      resolvers: [
+        AntDesignVueResolver(),
+      ],
     }),
+    PkgConfig(),
+    OptimizationPersist()
     // copy({
     //   targets: [
     //     { src: 'src/env.d.ts', dest: 'public' }, //执行拷贝

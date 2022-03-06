@@ -2,27 +2,56 @@
   "name": "20210827-v3-vi-ts",
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "dev": "vite --port=9527",
+    "build": "vue-tsc  --noEmit  && vite build",
     "serve": "vite preview"
   },
   "dependencies": {
     "ant-design-vue": "^2.2.7",
-    "axios": "^0.21.4",
-    "konva": "^8.2.1",
-    "vue": "^3.2.19",
+    "axios": "^0.24.0",
+    "konva": "^8.3.3",
+    "sockjs-client": "^1.6.0",
+    "stompjs": "^2.3.3",
+    "util": "^0.12.4",
+    "vue": "^3.2.31",
     "vue-router": "4"
   },
   "devDependencies": {
-    "@vitejs/plugin-legacy": "^1.5.3",
-    "@vitejs/plugin-vue": "^1.9.2",
-    "@vue/compiler-sfc": "^3.2.19",
+    "@types/sockjs-client": "^1.5.1",
+    "@types/stompjs": "^2.3.5",
+    "@vitejs/plugin-legacy": "^1.7.1",
+    "@vitejs/plugin-vue": "^2.2.4",
+    "@vue/compiler-sfc": "^3.2.31",
     "rollup-plugin-copy": "^3.4.0",
-    "ts-import-plugin": "^1.6.7",
-    "typescript": "^4.4.3",
-    "vite": "^2.5.10",
-    "vite-plugin-components": "^0.13.3",
-    "vite-plugin-style-import": "^1.2.1",
-    "vue-tsc": "^0.3.0"
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "ts-import-plugin": "^2.0.0",
+    "typescript": "4.6.2",
+    "unplugin-vue-components": "^0.17.21",
+    "vite": "2.8.6",
+    "vite-plugin-optimize-persist": "^0.1.2",
+    "vite-plugin-package-config": "^0.1.1",
+    "vite-plugin-style-import": "^2.0.0",
+    "vue-tsc": "0.32.1"
+  },
+  "vite": {
+    "optimizeDeps": {
+      "include": [
+        "@ant-design/icons-vue",
+        "@vue/runtime-core",
+        "ant-design-vue/es",
+        "ant-design-vue/es/breadcrumb/style/css",
+        "ant-design-vue/es/button/style/css",
+        "ant-design-vue/es/drawer/style/css",
+        "ant-design-vue/es/layout/style/css",
+        "ant-design-vue/es/menu/style/css",
+        "ant-design-vue/es/modal/style/css",
+        "ant-design-vue/es/table/style/css",
+        "konva",
+        "sockjs-client",
+        "stompjs",
+        "vue",
+        "vue-router"
+      ]
+    }
   }
 }

@@ -28,13 +28,11 @@
   </p>
   <a-button type="primary" @click="click0">Primary Button</a-button>
   <button type="button" @click="conuter++">count is: {{ conuter }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <slot></slot>
+  <a-table :dataSource="dataSource" :columns="columns" />
 </template>
 <script setup lang="ts">
-import { ref, toRefs, watchEffect, watch } from "vue";
+import { ref, toRefs, watchEffect, watch, reactive } from "vue";
 import { AliwangwangOutlined } from "@ant-design/icons-vue";
 const props = defineProps<{
   msg: string;
@@ -42,22 +40,24 @@ const props = defineProps<{
 const emits = defineEmits(["changev"]);
 const { msg } = toRefs(props);
 const conuter = ref(0);
-const click0 = () => {
+const click0 = async () => {
   click1().then((res) => {
     console.log(res);
   });
-  console.log("12131");
+  console.log("A:12131");
 };
 const click1 = async () => {
   emits("changev", "1231");
-  const post = await fetch(`https//www.baidu.com/api/post/1`)
+  //dataSource[0].name = "薛磊";
+  const post = await fetch(`https://www.baidu.com/api/post/1`)
     .then((r) => {
-      console.log(r.json());
+      console.log(r);
     })
     .catch((e) => {
       console.log(e);
     });
-  return post;
+  console.log("CCCCCC");
+  return "success";
 };
 watchEffect(() => {
   console.log("listener0:" + conuter.value);
@@ -65,6 +65,41 @@ watchEffect(() => {
 watch(conuter, (con, precon) => {
   console.log("listener0:" + con + "-" + precon);
 });
+
+let dataSource: { key: string; name: string; age: number; address: string }[] =
+  reactive([
+    {
+      key: "1",
+      name: "胡彦斌",
+      age: 32,
+      address: "西湖区湖底公园1号",
+    },
+    {
+      key: "2",
+      name: "胡彦祖",
+      age: 42,
+      address: "西湖区湖底公园1号",
+    },
+  ]);
+
+let columns = [
+  {
+    title: "姓名",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "年龄",
+    dataIndex: "age",
+    key: "age",
+  },
+  {
+    title: "住址",
+    dataIndex: "address",
+    key: "address",
+  },
+];
+defineExpose({ columns, dataSource });
 </script>
 <style scoped>
 a {

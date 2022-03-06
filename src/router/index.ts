@@ -20,6 +20,10 @@ const router = createRouter({
           {
             path: '/draw',
             component: () => import('@/view/draw/index.vue')
+          },
+          {
+            path: '/im',
+            component: () => import('@/view/im/index.vue')
           }
         ] 
       },
