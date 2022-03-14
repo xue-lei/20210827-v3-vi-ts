@@ -9,23 +9,20 @@
   </a-modal>
 </template>
 <script setup lang="ts">
-import Base from "@/components/base/index.vue";
-import { ref, toRef, toRefs } from "vue";
-
-const base = ref<InstanceType<typeof Base>>();
+const base = $ref<InstanceType<any>>();
 const changep = (val: String) => {
   console.log(val);
-  console.log(base.value.dataSource[0].name);
-  base.value.dataSource[0].name = "12313";
+  console.log(base.dataSource[0].name);
+  base.dataSource[0].name = "12313";
 };
 
-const visible = ref<boolean>(false);
+let visible = $ref<boolean>(false);
 const showModal = () => {
-  visible.value = true;
+  visible = true;
 };
 
 const handleOk = (e: MouseEvent) => {
   console.log(e);
-  visible.value = false;
+  visible = false;
 };
 </script>

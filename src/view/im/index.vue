@@ -1,10 +1,15 @@
 <template>
-  <a-button type="primary" @click="send">send</a-button>
+  <a-button type="primary" @click="send()">send</a-button>
+  <Im @sendMsg="send" />
 </template>
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "@vue/runtime-core";
 let socket = <WebSocket>{};
 onMounted(() => {
+  //createWebsocket();
+});
+onBeforeUnmount(() => {});
+let createWebsocket = () => {
   let loc = window.location;
   let new_uri;
   if (loc.protocol === "https:") {
@@ -19,8 +24,7 @@ onMounted(() => {
   // setTimeout(() => {
   //   socket.close();
   // }, 1000 * 3);
-});
-onBeforeUnmount(() => {});
+};
 let sockError = (event: Event) => {
   console.log(event);
 };
@@ -30,7 +34,8 @@ let sockOpen = (event: Event) => {
 let message = (msg: MessageEvent<any>) => {
   console.log(msg);
 };
-const send = () => {
-  socket.send("1213");
+const send = (msg: any = "123") => {
+  console.log(msg);
+  socket.send(JSON.stringify(msg));
 };
 </script>

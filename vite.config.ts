@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import styleImport from 'vite-plugin-style-import'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import copy from 'rollup-plugin-copy'
@@ -12,10 +11,6 @@ export default defineConfig({
   base: "/imws/",
   resolve: {
     alias: {
-      process: "process/browser",
-      stream: "stream-browserify",
-      zlib: "browserify-zlib",
-      util: 'util',
       'vue': 'vue/dist/vue.esm-bundler.js', // 定义vue的别名，如果使用其他的插件，可能会用到别名
       '@':'/src'
     }
@@ -68,6 +63,7 @@ export default defineConfig({
   plugins: [
     vue({
       //exclude: ['src/v3.config'],
+      reactivityTransform: true,
       template: {
         compilerOptions: {
           // ...
@@ -78,10 +74,11 @@ export default defineConfig({
       targets: ['defaults', 'not IE 11']
     }),
     Components({
-      extensions: ['src/components'],
+      //extensions: ['src/components'],
       resolvers: [
         AntDesignVueResolver(),
       ],
+      dts: 'src/components.d.ts'
     }),
     PkgConfig(),
     OptimizationPersist()
@@ -90,15 +87,5 @@ export default defineConfig({
     //     { src: 'src/env.d.ts', dest: 'public' }, //执行拷贝
     //   ]
     // }),
-    // styleImport({
-    //   libs: [
-    //     {
-    //       libraryName: 'ant-design-vue',
-    //       esModule: true,
-    //       resolveStyle: (name) => `ant-design-vue/es/${name}/style/css`,
-    //     },
-    //   ],
-    // }),
-
   ]
 })

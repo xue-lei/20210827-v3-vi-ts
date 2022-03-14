@@ -85,7 +85,7 @@ import {
   FileOutlined,
 } from "@ant-design/icons-vue";
 import { ref } from "vue";
-const placement = ref<string>("top");
+const placement = ref<"top" | "left">("top");
 const visible = ref<boolean>(false);
 let collapsed = ref(false);
 let selectedKeys = ref(["1"]);
