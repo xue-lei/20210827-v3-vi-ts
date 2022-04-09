@@ -49,13 +49,9 @@ const click0 = async () => {
 const click1 = async () => {
   emits("changev", "1231");
   //dataSource[0].name = "薛磊";
-  const post = await fetch(`https://www.baidu.com/api/post/1`)
-    .then((r) => {
-      console.log(r);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+  const post = await fetch(`https://www.baidu.com/api/post/1`);
+  console.log(post);
+
   console.log("CCCCCC");
   return "success";
 };
@@ -66,21 +62,20 @@ watch(conuter, (con, precon) => {
   console.log("listener0:" + con + "-" + precon);
 });
 
-let dataSource: { key: string; name: string; age: number; address: string }[] =
-  reactive([
-    {
-      key: "1",
-      name: "胡彦斌",
-      age: 32,
-      address: "西湖区湖底公园1号",
-    },
-    {
-      key: "2",
-      name: "胡彦祖",
-      age: 42,
-      address: "西湖区湖底公园1号",
-    },
-  ]);
+let dataSource: dataSourcei[] = reactive([
+  {
+    key: "1",
+    name: "胡彦斌",
+    age: 32,
+    address: "西湖区湖底公园1号",
+  },
+  {
+    key: "2",
+    name: "胡彦祖",
+    age: 42,
+    address: "西湖区湖底公园1号",
+  },
+]);
 
 let columns = [
   {

@@ -42,5 +42,18 @@ onMounted(() => {
   //
   stage.add(layer);
 });
+let columns = [
+  {
+    title: "姓名1",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "年龄1",
+    dataIndex: "age",
+    key: "age",
+  },
+];
+defineExpose({ columns });
 </script>
 <style></style>

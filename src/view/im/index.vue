@@ -34,7 +34,13 @@ let sockOpen = (event: Event) => {
 let message = (msg: MessageEvent<any>) => {
   console.log(msg);
 };
-const send = (msg: any = "123") => {
+const send = (
+  msg: messagei = {
+    type: "12",
+    author: "xuelei",
+    data: { text: "121", meta: "123" },
+  }
+) => {
   console.log(msg);
   socket.send(JSON.stringify(msg));
 };
