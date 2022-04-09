@@ -32,7 +32,5 @@ const showModal = () => {
 const handleOk = (e: MouseEvent) => {
   console.log(e);
   visible = false; 
-  var a:messagei = {};
-  console.log(a);
 };
 </script>
