@@ -32,7 +32,7 @@ const sendMsg = (
   send(JSON.stringify(msg));
 };
 
-watch([status, data],()=>{
+watch([status],()=>{
   console.log(status.value);
 })
 
