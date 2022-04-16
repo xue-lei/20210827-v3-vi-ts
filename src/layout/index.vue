@@ -79,6 +79,13 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
+import {
+  PieChartOutlined,
+  DesktopOutlined,
+  UserOutlined,
+  TeamOutlined,
+  FileOutlined,
+} from "@ant-design/icons-vue";
 const placement = ref<"top" | "left">("top");
 const visible = ref<boolean>(false);
 let collapsed = ref(false);

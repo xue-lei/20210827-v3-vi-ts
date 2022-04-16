@@ -1,6 +1,6 @@
 <template>
  <Teleport to = "body">
-  <Chat @sendMsg1="sendMsg"/>
+  <Chat @sendMsg="sendMsg"/>
  </Teleport>
 </template>
 <script setup lang="ts">
@@ -12,7 +12,7 @@ const { status, data, send } = useWebSocket(getUrl(), {
     retries: 2,
     delay: 1000,
     onFailed() {
-      message.error('连接失败!')
+      message.error('连接失败!!')
     }
    },
    heartbeat: {
@@ -28,6 +28,10 @@ const sendMsg = (
     data: { text: "121", meta: "123" },
   }
 ) => {
+  if(status.value != 'OPEN'){
+    message.error('连接失败!!')
+    return;
+  }
   console.log(JSON.stringify(msg));
   send(JSON.stringify(msg));
 };
