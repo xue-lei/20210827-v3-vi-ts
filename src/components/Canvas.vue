@@ -44,7 +44,7 @@ onMounted(() => {
 });
 let columns = [
   {
-    title: "姓名1",
+    title: "姓名2",
     dataIndex: "name",
     key: "name",
   },

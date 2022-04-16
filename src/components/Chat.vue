@@ -27,7 +27,7 @@
   </div>
 </template>
 <script setup lang="ts">
-const emit = defineEmits(["sendMsg"]);
+const emit = defineEmits(['sendMsg']);
 let participants = $ref([
   {
     id: "user1",

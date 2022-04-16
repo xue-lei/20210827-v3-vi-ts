@@ -6,7 +6,7 @@
   <a-modal v-model:visible="visible" title="Basic Modal" @ok="handleOk">
     <p>Some contents...</p>
     <p>Some contents...</p>
-    <p>Some contents...</p>
+    <p>Some content12121s...</p>
   </a-modal>
   <Canvas ref="canvas" />
 </template>
