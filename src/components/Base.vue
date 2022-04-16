@@ -33,7 +33,6 @@
 </template>
 <script setup lang="ts">
 import { ref, toRefs, watchEffect, watch, reactive } from "vue";
-import { AliwangwangOutlined } from "@ant-design/icons-vue";
 const props = defineProps<{
   msg: string;
 }>();

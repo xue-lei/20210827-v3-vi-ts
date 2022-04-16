@@ -7,6 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@vue/runtime-core": "^3.2.33",
     "@vueuse/core": "^8.2.6",
     "ant-design-vue": "^3.1.1",
     "axios": "^0.26.1",
@@ -35,7 +36,6 @@
   "vite": {
     "optimizeDeps": {
       "include": [
-        "@ant-design/icons-vue",
         "@vue/runtime-core",
         "@vueuse/core",
         "ant-design-vue",
@@ -50,7 +50,6 @@
         "konva",
         "sockjs-client",
         "vue",
-        "vue-demi",
         "vue-router",
         "vue3-beautiful-chat"
       ]
