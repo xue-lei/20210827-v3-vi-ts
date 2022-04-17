@@ -26,14 +26,6 @@ const click1 = async () => {
   let post = await request('https://httpbin.org/get');
   console.log(post);
 };
-
-watchEffect(() => {
-  console.log("listener0:" + conuter.value);
-});
-watch(conuter, (con, precon) => {
-  console.log("listener0:" + con + "-" + precon);
-});
-
 let dataSource = reactive<dataSourcei[]>([
   {
     key: "1",
@@ -48,7 +40,6 @@ let dataSource = reactive<dataSourcei[]>([
     address: "西湖区湖底公园1号",
   },
 ]);
-
 let columns = [
   {
     title: "姓名",
@@ -66,6 +57,13 @@ let columns = [
     key: "address",
   },
 ];
+
+watchEffect(() => {
+  console.log("listener0:" + conuter.value);
+});
+watch(conuter, (con, precon) => {
+  console.log("listener0:" + con + "-" + precon);
+});
 watch(()=>_.cloneDeep(dataSource),(n, o)=>{
   console.log(n, o);
 })
