@@ -8,8 +8,8 @@
   <a-table :dataSource="dataSource" :columns="columns" />
 </template>
 <script setup lang="ts">
+import { request } from "@/api/request";
 import { ref, toRefs, watchEffect, watch, reactive } from "vue";
-import { AliwangwangOutlined } from "@ant-design/icons-vue";
 const props = defineProps<{
   msg: string;
 }>();
@@ -17,20 +17,15 @@ const emits = defineEmits(["changev"]);
 const { msg } = toRefs(props);
 const conuter = ref(0);
 const click0 = async () => {
-  click1().then((res) => {
-    console.log(res);
-  });
+  click1()
   console.log("A:12131");
 };
 const click1 = async () => {
   emits("changev", "1231");
-  //dataSource[0].name = "薛磊";
-  const post = await fetch(`https://www.baidu.com/api/post/1`);
+  let post = await request('https://httpbin.org/get');
   console.log(post);
-
-  console.log("CCCCCC");
-  return "success";
 };
+
 watchEffect(() => {
   console.log("listener0:" + conuter.value);
 });
