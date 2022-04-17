@@ -1,34 +1,10 @@
 <template>
-  <p>
-    <!--使用 router-link 组件进行导航 -->
-    <!--通过传递 `to` 来指定链接 -->
-    <!--`<router-link>` 将呈现一个带有正确 `href` 属性的 `<a>` 标签-->
-    <router-link to="/">Go to Home</router-link>
-  </p>
-  <AliwangwangOutlined :style="{ fontSize: '100px' }" />
   <!-- 路由出口 -->
   <!-- 路由匹配到的组件将渲染在这里 -->
   <h1>{{ msg }}</h1>
-
-  <p>
-    Recommended IDE setup:a多发发
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-
-  <p>See <code>README.md</code> for more information.</p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
-  </p>
   <a-button type="primary" @click="click0">Primary Button</a-button>
-  <button type="button" @click="conuter++">count is: {{ conuter }}</button>
-  <slot></slot>
+  <a-button type="primary" @click="conuter++">count is: {{ conuter }}</a-button>
+  <slot/>
   <a-table :dataSource="dataSource" :columns="columns" />
 </template>
 <script setup lang="ts">
