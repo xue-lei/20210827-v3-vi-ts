@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@ant-design/icons-vue': ^6.1.0
+  '@types/lodash': ^4.14.181
   '@types/sockjs-client': ^1.5.1
   '@vitejs/plugin-legacy': ^1.7.1
   '@vitejs/plugin-vue': ^2.2.4
@@ -11,6 +12,7 @@ specifiers:
   ant-design-vue: ^3.1.1
   axios: ^0.26.1
   konva: ^8.3.3
+  lodash: ^4.17.21
   rollup-plugin-copy: ^3.4.0
   rollup-plugin-node-polyfills: ^0.2.1
   sockjs-client: ^1.6.0
@@ -33,12 +35,14 @@ dependencies:
   ant-design-vue: registry.npmmirror.com/ant-design-vue/3.1.1_vue@3.2.33
   axios: registry.npmmirror.com/axios/0.26.1
   konva: registry.npmmirror.com/konva/8.3.5
+  lodash: registry.npmmirror.com/lodash/4.17.21
   sockjs-client: registry.npmmirror.com/sockjs-client/1.6.0
   vue: registry.npmmirror.com/vue/3.2.33
   vue-router: registry.npmmirror.com/vue-router/4.0.14_vue@3.2.33
   vue3-beautiful-chat: registry.npmmirror.com/vue3-beautiful-chat/3.2.0_vue@3.2.33
 
 devDependencies:
+  '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.181
   '@types/sockjs-client': registry.npmmirror.com/@types/sockjs-client/1.5.1
   '@vitejs/plugin-legacy': registry.npmmirror.com/@vitejs/plugin-legacy/1.8.1_vite@2.9.5
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.3.1_vite@2.9.5+vue@3.2.33
@@ -242,6 +246,12 @@ packages:
     dependencies:
       '@types/minimatch': registry.npmmirror.com/@types/minimatch/3.0.5
       '@types/node': registry.npmmirror.com/@types/node/17.0.24
+    dev: true
+
+  registry.npmmirror.com/@types/lodash/4.14.181:
+    resolution: {integrity: sha512-n3tyKthHJbkiWhDZs3DkhkCzt2MexYHXlX0td5iMplyfwketaOeKboEVBqzceH7juqvEg3q5oUoBFxSLu7zFag==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.181.tgz}
+    name: '@types/lodash'
+    version: 4.14.181
     dev: true
 
   registry.npmmirror.com/@types/minimatch/3.0.5:

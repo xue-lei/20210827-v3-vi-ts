@@ -10,6 +10,7 @@
 <script setup lang="ts">
 import { request } from "@/api/request";
 import { ref, toRefs, watchEffect, watch, reactive } from "vue";
+import _ from 'lodash';
 const props = defineProps<{
   msg: string;
 }>();
@@ -33,7 +34,7 @@ watch(conuter, (con, precon) => {
   console.log("listener0:" + con + "-" + precon);
 });
 
-let dataSource: dataSourcei[] = reactive([
+let dataSource = reactive<dataSourcei[]>([
   {
     key: "1",
     name: "胡彦斌",
@@ -65,6 +66,9 @@ let columns = [
     key: "address",
   },
 ];
+watch(()=>_.cloneDeep(dataSource),(n, o)=>{
+  console.log(n, o);
+})
 defineExpose({ columns, dataSource });
 </script>
 <style scoped>
