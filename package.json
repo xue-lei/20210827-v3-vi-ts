@@ -14,14 +14,12 @@
     "axios": "^0.26.1",
     "konva": "^8.3.3",
     "lodash": "^4.17.21",
-    "sockjs-client": "^1.6.0",
     "vue": "^3.2.33",
     "vue-router": "4",
     "vue3-beautiful-chat": "^3.2.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.181",
-    "@types/sockjs-client": "^1.5.1",
     "@vitejs/plugin-legacy": "^1.7.1",
     "@vitejs/plugin-vue": "^2.2.4",
     "@vue/compiler-sfc": "^3.2.33",
@@ -51,7 +49,6 @@
         "ant-design-vue/es/modal/style/css",
         "ant-design-vue/es/table/style/css",
         "konva",
-        "sockjs-client",
         "vue",
         "vue-router",
         "vue3-beautiful-chat"
