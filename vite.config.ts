@@ -21,7 +21,6 @@ export default defineConfig({
     minify: 'terser',
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
-
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
@@ -33,11 +32,8 @@ export default defineConfig({
           }
         },
         chunkFileNames: (chunkInfo) => {
-          const facadeModuleId = chunkInfo.facadeModuleId
-            ? chunkInfo.facadeModuleId.split('/')
-            : [];
-          const fileName =
-            facadeModuleId[facadeModuleId.length - 2] || '[name]';
+          const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/') : [];
+          const fileName = facadeModuleId[facadeModuleId.length - 2] || '[name]';
           return `js/${fileName}/[name].[hash].js`;
         }
       }

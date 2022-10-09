@@ -4,8 +4,9 @@
   <h1>{{ msg }}</h1>
   <a-button type="primary" @click="click0">Primary Button</a-button>
   <a-button type="primary" @click="conuter++">count is: {{ conuter }}</a-button>
+  <a-button type="primary" @click="isHas = true">display</a-button>
   <slot/>
-  <a-table :dataSource="dataSource" :columns="columns" />
+  <a-table v-if="isHas" :dataSource="dataSource" :columns="columns" />
 </template>
 <script setup lang="ts">
 import { request } from "@/api/request";
@@ -17,6 +18,7 @@ const props = defineProps<{
 const emits = defineEmits(["changev"]);
 const { msg } = toRefs(props);
 const conuter = ref(0);
+const isHas = ref<Boolean>(false);
 const click0 = async () => {
   click1()
   console.log("A:12131");
