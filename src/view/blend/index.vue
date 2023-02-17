@@ -1,5 +1,5 @@
 <template>
-  <Base msg="测试" @changev="changep" ref="base">
+  <Base ref="base" msg="测试" @changev="changep">
     <a-button type="primary" @click="showModal">Primary Button111</a-button>
   </Base>
   <a-modal v-model:visible="visible" title="Basic Modal" @ok="handleOk">
@@ -9,12 +9,15 @@
   </a-modal>
 </template>
 <script setup lang="ts">
-const base = $ref<any>();
+const base = $ref<{
+  columns: Array<any>;
+  dataSource: Array<dataSourcei>;
+}>();
 const changep = (val: String) => {
   console.log(base);
   console.log(val);
   console.log(base.dataSource[0].name);
-  base.dataSource[0].name = "12313";
+  base.dataSource[0].name = '12313';
 };
 let visible = $ref<boolean>(false);
 const showModal = () => {
@@ -22,6 +25,6 @@ const showModal = () => {
 };
 const handleOk = (e: MouseEvent) => {
   console.log(e);
-  visible = false; 
+  visible = false;
 };
 </script>

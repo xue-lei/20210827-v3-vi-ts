@@ -1,19 +1,22 @@
 <template>
-  <a-layout style="min-height: 100vh" id="components-layout-demo-side">
+  <a-layout id="components-layout-demo-side" style="min-height: 100vh">
     <a-layout-sider v-model:collapsed="collapsed" collapsible>
       <div class="logo" />
-      <a-menu theme="dark" v-model:selectedKeys="selectedKeys" mode="inline">
+      <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
         <a-menu-item key="1">
           <pie-chart-outlined />
-          <span></span><router-link to="/blend">Option 1</router-link>
+          <span></span>
+          <router-link to="/blend">Option 1</router-link>
         </a-menu-item>
         <a-menu-item key="2">
           <desktop-outlined />
-          <span></span><router-link to="/draw">Option 2</router-link>
+          <span></span>
+          <router-link to="/draw">Option 2</router-link>
         </a-menu-item>
         <a-menu-item key="3">
           <desktop-outlined />
-          <span></span><router-link to="/draw">Option 3</router-link>
+          <span></span>
+          <router-link to="/draw">Option 3</router-link>
         </a-menu-item>
         <a-sub-menu key="sub1">
           <template #title>
@@ -22,12 +25,12 @@
               <span>User</span>
             </span>
           </template>
-          <a-menu-item key="3"
-            ><router-link to="/blend">option1</router-link></a-menu-item
-          >
-          <a-menu-item key="4"
-            ><router-link to="/draw">option2</router-link></a-menu-item
-          >
+          <a-menu-item key="3">
+            <router-link to="/blend">option1</router-link>
+          </a-menu-item>
+          <a-menu-item key="4">
+            <router-link to="/draw">option2</router-link>
+          </a-menu-item>
           <a-menu-item key="5">Alex</a-menu-item>
         </a-sub-menu>
         <a-sub-menu key="sub2">
@@ -75,21 +78,22 @@
     <p>Some contents...</p>
     <p>Some contents...</p>
   </a-drawer>
-  <Im/>
+  <Im />
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue';
 import {
   PieChartOutlined,
   DesktopOutlined,
   UserOutlined,
   TeamOutlined,
-  FileOutlined,
-} from "@ant-design/icons-vue";
-const placement = ref<"top" | "left">("top");
+  FileOutlined
+} from '@ant-design/icons-vue';
+
+const placement = ref<'top' | 'left'>('top');
 const visible = ref<boolean>(false);
-let collapsed = ref(false);
-let selectedKeys = ref(["1"]);
+const collapsed = ref(false);
+const selectedKeys = ref(['1']);
 const showDrawer = () => {
   visible.value = true;
 };
@@ -109,7 +113,7 @@ const onClose = () => {
   background: #fff;
 }
 
-[data-theme="dark"] .site-layout .site-layout-background {
+[data-theme='dark'] .site-layout .site-layout-background {
   background: #141414;
 }
 </style>

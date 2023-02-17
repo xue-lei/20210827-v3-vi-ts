@@ -1,6 +1,6 @@
 interface dataSourcei {
-    key: string,
-    name: string,
-    age: number,
-    address: string
+  key: string;
+  name: string;
+  age: number;
+  address: string;
 }

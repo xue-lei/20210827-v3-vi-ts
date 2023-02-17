@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
@@ -18,7 +18,7 @@ export default defineConfig({
   build: {
     outDir:"dist/imws",
     sourcemap: false,
-    minify: 'terser',
+    // minify: 'terser',
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
       output: {
@@ -76,6 +76,7 @@ export default defineConfig({
         }
       }
     }),
+    //splitVendorChunkPlugin(),
     legacy({
       targets: ['defaults', 'not IE 11']
     }),

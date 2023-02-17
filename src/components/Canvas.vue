@@ -4,8 +4,8 @@
   <div id="container"></div>
 </template>
 <script setup lang="ts">
-import { onMounted } from "vue";
-import Konva from "konva";
+import { onMounted } from 'vue';
+import Konva from 'konva';
 
 // let layer = new Konva.Layer();
 let stage = <Konva.Stage>{};
@@ -13,7 +13,7 @@ let layer = <Konva.Layer>{};
 let circle = <Konva.Circle>{};
 const addRct = () => {
   layer.add(circle);
-  //stage.add(layer);
+  // stage.add(layer);
 };
 
 const removeRct = () => {
@@ -24,9 +24,9 @@ const removeRct = () => {
 onMounted(() => {
   // 画布
   stage = new Konva.Stage({
-    container: "container",
+    container: 'container',
     width: 200,
-    height: 200,
+    height: 200
   });
   // 笔
   layer = new Konva.Layer();
@@ -35,24 +35,24 @@ onMounted(() => {
     x: stage.width() / 2,
     y: stage.height() / 2,
     radius: 70,
-    fill: "red",
-    stroke: "black",
-    strokeWidth: 4,
+    fill: 'red',
+    stroke: 'black',
+    strokeWidth: 4
   });
   //
   stage.add(layer);
 });
-let columns = [
+const columns = [
   {
-    title: "姓名2",
-    dataIndex: "name",
-    key: "name",
+    title: '姓名2',
+    dataIndex: 'name',
+    key: 'name'
   },
   {
-    title: "年龄1",
-    dataIndex: "age",
-    key: "age",
-  },
+    title: '年龄1',
+    dataIndex: 'age',
+    key: 'age'
+  }
 ];
 defineExpose({ columns });
 </script>

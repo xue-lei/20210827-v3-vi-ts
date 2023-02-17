@@ -1,0 +1,5 @@
+dist
+vite.config.ts
+tsconfig.json
+*.d.ts
+package.json

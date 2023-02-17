@@ -5,70 +5,75 @@
   <a-button type="primary" @click="click0">Primary Button</a-button>
   <a-button type="primary" @click="conuter++">count is: {{ conuter }}</a-button>
   <a-button type="primary" @click="isHas = true">display</a-button>
-  <slot/>
-  <a-table v-if="isHas" :dataSource="dataSource" :columns="columns" />
+  <slot />
+  <a-table v-if="isHas" :data-source="dataSource" :columns="columns" />
 </template>
 <script setup lang="ts">
-import { request } from "@/api/request";
-import { ref, toRefs, watchEffect, watch, reactive } from "vue";
+import { ref, toRefs, watchEffect, watch, reactive } from 'vue';
 import _ from 'lodash';
+import { request } from '@/api/request';
+
 const props = defineProps<{
   msg: string;
 }>();
-const emits = defineEmits(["changev"]);
+const emits = defineEmits(['changev']);
 const { msg } = toRefs(props);
 const conuter = ref(0);
 const isHas = ref<Boolean>(false);
-const click0 = async () => {
-  click1()
-  console.log("A:12131");
-};
 const click1 = async () => {
-  emits("changev", "1231");
-  let post = await request('https://httpbin.org/get');
+  emits('changev', '1231');
+  const post = await request('https://httpbin.org/get');
   console.log(post);
 };
-let dataSource = reactive<dataSourcei[]>([
+const click0 = async () => {
+  click1();
+  console.log('A:12131');
+};
+
+const dataSource: dataSourcei[] = reactive<dataSourcei[]>([
   {
-    key: "1",
-    name: "胡彦斌",
+    key: '1',
+    name: '胡彦斌',
     age: 32,
-    address: "西湖区湖底公园1号",
+    address: '西湖区湖底公园1号'
   },
   {
-    key: "2",
-    name: "胡彦祖",
+    key: '2',
+    name: '胡彦祖',
     age: 42,
-    address: "西湖区湖底公园1号",
-  },
+    address: '西湖区湖底公园1号'
+  }
 ]);
-let columns = [
+const columns = [
   {
-    title: "姓名",
-    dataIndex: "name",
-    key: "name",
+    title: '姓名',
+    dataIndex: 'name',
+    key: 'name'
   },
   {
-    title: "年龄",
-    dataIndex: "age",
-    key: "age",
+    title: '年龄',
+    dataIndex: 'age',
+    key: 'age'
   },
   {
-    title: "住址",
-    dataIndex: "address",
-    key: "address",
-  },
+    title: '住址',
+    dataIndex: 'address',
+    key: 'address'
+  }
 ];
 
 watchEffect(() => {
-  console.log("listener0:" + conuter.value);
+  console.log(`listener0:${conuter.value}`);
 });
 watch(conuter, (con, precon) => {
-  console.log("listener0:" + con + "-" + precon);
+  console.log(`listener0:${con}-${precon}`);
 });
-watch(()=>_.cloneDeep(dataSource),(n, o)=>{
-  console.log(n, o);
-})
+watch(
+  () => _.cloneDeep(dataSource),
+  (n, o) => {
+    console.log(n, o);
+  }
+);
 defineExpose({ columns, dataSource });
 </script>
 <style scoped>
