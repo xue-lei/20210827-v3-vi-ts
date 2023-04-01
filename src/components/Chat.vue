@@ -27,8 +27,10 @@
   </div>
 </template>
 <script setup lang="ts">
+import { ref, reactive } from 'vue';
+
 const emit = defineEmits(['sendMsg']);
-const participants = $ref([
+const participants = reactive([
   {
     id: 'user1',
     name: 'Matteo',
@@ -40,7 +42,7 @@ const participants = $ref([
     imageUrl: 'https://avatars3.githubusercontent.com/u/37018832?s=200&v=4'
   }
 ]);
-let messageList: messagei[] = $ref([
+const messageList: messagei[] = reactive([
   {
     type: 'text',
     author: `me`,
@@ -56,29 +58,29 @@ let messageList: messagei[] = $ref([
     data: { text: `No.`, meta: '06-16-2019 12:43' }
   }
 ]);
-let newMessagesCount = $ref(0);
-let isChatOpen = $ref(false);
+const newMessagesCount = ref(0);
+const isChatOpen = ref(false);
 const titleImageUrl =
   'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png';
-const showTypingIndicator = $ref('');
-const alwaysScrollToBottom = $ref(false);
-const messageStyling = $ref(true);
+const showTypingIndicator = ref('');
+const alwaysScrollToBottom = ref(false);
+const messageStyling = ref(true);
 const onMessageWasSent = (message: messagei) => {
   console.log(message);
   emit('sendMsg', message);
   message.isEdited = true;
   message.id = 3;
   // called when the user sends a message
-  messageList = [...messageList, message];
+  messageList.push(message);
 };
 const closeChat = () => {
   // called when the user clicks on the botton to close the chat
-  isChatOpen = false;
+  isChatOpen.value = false;
 };
 const openChat = () => {
   // called when the user clicks on the fab button to open the chat
-  isChatOpen = true;
-  newMessagesCount = 0;
+  isChatOpen.value = true;
+  newMessagesCount.value = 0;
 };
 const colors = {
   header: {
