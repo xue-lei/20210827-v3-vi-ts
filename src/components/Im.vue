@@ -8,7 +8,8 @@ import { useWebSocket } from '@vueuse/core';
 import { watch } from 'vue';
 import { message } from 'ant-design-vue';
 
-function getUrl(): string {
+// 获取项目路径
+const getUrl = (): string => {
   const loc = window.location;
   let newUri;
   if (loc.protocol === 'https:') {
@@ -18,8 +19,9 @@ function getUrl(): string {
   }
   newUri += `//${loc.host}/imws/im`;
   return newUri;
-}
+};
 
+// 打开websocket
 const { status, send } = useWebSocket(getUrl(), {
   autoReconnect: {
     retries: 2,
@@ -34,6 +36,7 @@ const { status, send } = useWebSocket(getUrl(), {
   }
 });
 
+// 发送消息
 const sendMsg = (
   msg: messagei = {
     type: '12',

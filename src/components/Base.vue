@@ -30,7 +30,7 @@ const click0 = async () => {
   console.log('A:12131');
 };
 
-const dataSource: dataSourcei[] = reactive<dataSourcei[]>([
+const dataSource: DataSourcei[] = reactive([
   {
     key: '1',
     name: '胡彦斌',

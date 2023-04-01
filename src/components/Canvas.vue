@@ -7,11 +7,24 @@
 import { onMounted } from 'vue';
 import Konva from 'konva';
 
+// 画布
 // let layer = new Konva.Layer();
 let stage = <Konva.Stage>{};
-let layer = <Konva.Layer>{};
-let circle = <Konva.Circle>{};
+// 笔
+const layer = new Konva.Layer();
+// 圆
+const circle = new Konva.Circle({
+  radius: 70,
+  fill: 'red',
+  stroke: 'black',
+  strokeWidth: 4
+});
+
 const addRct = () => {
+  circle.setPosition({
+    x: stage.width() / 2,
+    y: stage.height() / 2
+  });
   layer.add(circle);
   // stage.add(layer);
 };
@@ -28,18 +41,6 @@ onMounted(() => {
     width: 200,
     height: 200
   });
-  // 笔
-  layer = new Konva.Layer();
-  // 圆形
-  circle = new Konva.Circle({
-    x: stage.width() / 2,
-    y: stage.height() / 2,
-    radius: 70,
-    fill: 'red',
-    stroke: 'black',
-    strokeWidth: 4
-  });
-  //
   stage.add(layer);
 });
 const columns = [
