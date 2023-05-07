@@ -2,7 +2,7 @@
   <!-- 路由出口 -->
   <!-- 路由匹配到的组件将渲染在这里 -->
   <h1>{{ msg }}</h1>
-  <a-button type="primary" @click="click0">Primary Button</a-button>
+  <a-button type="default" @click="click0">Primary Button</a-button>
   <a-button type="primary" @click="conuter++">count is: {{ conuter }}</a-button>
   <a-button type="primary" @click="isHas = true">display</a-button>
   <slot />
@@ -61,7 +61,6 @@ const columns = [
     key: 'address'
   }
 ];
-
 watchEffect(() => {
   console.log(`listener0:${conuter.value}`);
 });

@@ -2,7 +2,7 @@
   <div>
     <beautiful-chat
       :participants="participants"
-      :title-image-url="titleImageUrl"
+      title-image-url="https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png"
       :on-message-was-sent="onMessageWasSent"
       :message-list="messageList"
       :new-messages-count="newMessagesCount"
@@ -60,8 +60,6 @@ const messageList: messagei[] = reactive([
 ]);
 const newMessagesCount = ref(0);
 const isChatOpen = ref(false);
-const titleImageUrl =
-  'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png';
 const showTypingIndicator = ref('');
 const alwaysScrollToBottom = ref(false);
 const messageStyling = ref(true);
